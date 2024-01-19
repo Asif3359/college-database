@@ -81,7 +81,7 @@ function App() {
           <div>
             <label>cgpa :</label>
             <br></br>
-            <input type="number" name='cgpa' min="0" max="5" step="0.01" className='border-2 p-2 rounded-lg border-black ' />
+            <input type="number" name='cgpa'  step="0.01" className='border-2 p-2 rounded-lg border-black ' />
           </div>
           <div>
             <label>Email :</label>
