@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -53,12 +54,14 @@ function App() {
         <div className='grid grid-cols-4  gap-4 mt-5'>
           {
             data.map((item, index) => <div className='border-2 p-2' key={item.id}>
-              <h1>{item.id}</h1>
-              <h1>{item.Name}</h1>
+              <Link to={`student/${item.id}`}>
+                <h1>{item.id}</h1>
+                <h1>{item.Name}</h1>
 
-              <h1>{item.cgpa}</h1>
-              <h1>{item.Email}</h1>
-              <h1>{item.Phone}*****</h1>
+                <h1>{item.cgpa}</h1>
+                <h1>{item.Email}</h1>
+                <h1>{item.Phone}*****</h1>
+              </Link>
             </div>)
           }
         </div>
