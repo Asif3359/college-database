@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 const Student = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [student, setStudent] = useState({});
 
     useEffect(() => {
@@ -31,6 +32,15 @@ const Student = () => {
             console.log(res);
         })
     }
+
+    const deleteStudent = () => {
+        // console.log(id);
+        axios.delete(`http://localhost:5000/delete/${id}`)
+            .then((res) => {
+                // console.log(res);
+                navigate('/');
+            })
+    }
     return (
         <>
             <div className='m-10'>
@@ -39,6 +49,10 @@ const Student = () => {
                 <h1>{student.Email}</h1>
                 <h1>{student.Phone}</h1>
                 <h1>{student.cgpa}</h1>
+            </div>
+
+            <div>
+                <button onClick={deleteStudent} className='p-3 bg-gray-300 '>Delete</button>
             </div>
 
             <div>
@@ -69,7 +83,7 @@ const Student = () => {
                         <input type="text" name='phone' defaultValue={student.Phone} className='border-2 p-2 rounded-lg border-black ' />
                     </div>
                     <div>
-                        <input type="submit" value="submit" className='bg-gray-500 p-2 rounded-lg text-white ' />
+                        <input type="submit" value="update" className='bg-gray-500 p-2 rounded-lg text-white ' />
                     </div>
                 </form>
             </div>
